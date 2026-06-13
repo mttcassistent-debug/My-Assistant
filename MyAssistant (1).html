@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="My Assistant">
+<meta name="theme-color" content="#6c8fff">
+<link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogIk15IEFzc2lzdGFudCIsCiAgInNob3J0X25hbWUiOiAiQXNzaXN0YW50IiwKICAiZGVzY3JpcHRpb24iOiAiUGVyc29uYWwgQXNzaXN0YW50IEFwcCIsCiAgInN0YXJ0X3VybCI6ICIuL015QXNzaXN0YW50Lmh0bWwiLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiMwZjExMTciLAogICJ0aGVtZV9jb2xvciI6ICIjNmM4ZmZmIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJpY29ucyI6IFsKICAgIHsic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0F4T1RJZ01Ua3lJajRLSUNBOFpHVm1jejRLSUNBZ0lEeHNhVzVsWVhKSGNtRmthV1Z1ZENCcFpEMGlaeUlnZURFOUlqQWxJaUI1TVQwaU1DVWlJSGd5UFNJeE1EQWxJaUI1TWowaU1UQXdKU0krQ2lBZ0lDQWdJRHh6ZEc5d0lHOW1abk5sZEQwaU1DVWlJSE4wZVd4bFBTSnpkRzl3TFdOdmJHOXlPaU0yWXpobVptWWlMejRLSUNBZ0lDQWdQSE4wYjNBZ2IyWm1jMlYwUFNJeE1EQWxJaUJ6ZEhsc1pUMGljM1J2Y0MxamIyeHZjam9qWVRjNFltWmhJaTgrQ2lBZ0lDQThMMnhwYm1WaGNrZHlZV1JwWlc1MFBnb2dJRHd2WkdWbWN6NEtJQ0E4Y21WamRDQjNhV1IwYUQwaU1Ua3lJaUJvWldsbmFIUTlJakU1TWlJZ2NuZzlJalF3SWlCbWFXeHNQU0lqTVdFeFpESTNJaTgrQ2lBZ1BISmxZM1FnZDJsa2RHZzlJakU1TWlJZ2FHVnBaMmgwUFNJeE9USWlJSEo0UFNJME1DSWdabWxzYkQwaWRYSnNLQ05uS1NJZ2IzQmhZMmwwZVQwaU1DNHhOU0l2UGdvZ0lEeDBaWGgwSUhnOUlqazJJaUI1UFNJeE1UVWlJR1p2Ym5RdFptRnRhV3g1UFNKSFpXOXlaMmxoTEhObGNtbG1JaUJtYjI1MExYTnBlbVU5SWpnd0lpQm1iMjUwTFhkbGFXZG9kRDBpWW05c1pDSWdDaUFnSUNBZ0lDQWdabWxzYkQwaWRYSnNLQ05uS1NJZ2RHVjRkQzFoYm1Ob2IzSTlJbTFwWkdSc1pTSStUVHd2ZEdWNGRENEtJQ0E4ZEdWNGRDQjRQU0k1TmlJZ2VUMGlNVFl3SWlCbWIyNTBMV1poYldsc2VUMGlRWEpwWVd3c2MyRnVjeTF6WlhKcFppSWdabTl1ZEMxemFYcGxQU0l5TWlJZ0NpQWdJQ0FnSUNBZ1ptbHNiRDBpSXpnNE9USmhOQ0lnZEdWNGRDMWhibU5vYjNJOUltMXBaR1JzWlNJK1FYTnphWE4wWVc1MFBDOTBaWGgwUGdvOEwzTjJaejQ9IiwgInNpemVzIjogIjE5MngxOTIiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIn0sCiAgICB7InNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUI0Yld4dWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lJSFpwWlhkQ2IzZzlJakFnTUNBMU1USWdOVEV5SWo0S0lDQThaR1ZtY3o0S0lDQWdJRHhzYVc1bFlYSkhjbUZrYVdWdWRDQnBaRDBpWnlJZ2VERTlJakFsSWlCNU1UMGlNQ1VpSUhneVBTSXhNREFsSWlCNU1qMGlNVEF3SlNJK0NpQWdJQ0FnSUR4emRHOXdJRzltWm5ObGREMGlNQ1VpSUhOMGVXeGxQU0p6ZEc5d0xXTnZiRzl5T2lNMll6aG1abVlpTHo0S0lDQWdJQ0FnUEhOMGIzQWdiMlptYzJWMFBTSXhNREFsSWlCemRIbHNaVDBpYzNSdmNDMWpiMnh2Y2pvallUYzRZbVpoSWk4K0NpQWdJQ0E4TDJ4cGJtVmhja2R5WVdScFpXNTBQZ29nSUR3dlpHVm1jejRLSUNBOGNtVmpkQ0IzYVdSMGFEMGlOVEV5SWlCb1pXbG5hSFE5SWpVeE1pSWdjbmc5SWpRd0lpQm1hV3hzUFNJak1XRXhaREkzSWk4K0NpQWdQSEpsWTNRZ2QybGtkR2c5SWpVeE1pSWdhR1ZwWjJoMFBTSTFNVElpSUhKNFBTSTBNQ0lnWm1sc2JEMGlkWEpzS0NObktTSWdiM0JoWTJsMGVUMGlNQzR4TlNJdlBnb2dJRHgwWlhoMElIZzlJakkxTmlJZ2VUMGlNekExSWlCbWIyNTBMV1poYldsc2VUMGlSMlZ2Y21kcFlTeHpaWEpwWmlJZ1ptOXVkQzF6YVhwbFBTSXlNREFpSUdadmJuUXRkMlZwWjJoMFBTSmliMnhrSWlBS0lDQWdJQ0FnSUNCbWFXeHNQU0oxY213b0kyY3BJaUIwWlhoMExXRnVZMmh2Y2owaWJXbGtaR3hsSWo1TlBDOTBaWGgwUGdvZ0lEeDBaWGgwSUhnOUlqSTFOaUlnZVQwaU5ESXdJaUJtYjI1MExXWmhiV2xzZVQwaVFYSnBZV3dzYzJGdWN5MXpaWEpwWmlJZ1ptOXVkQzF6YVhwbFBTSTFOU0lnQ2lBZ0lDQWdJQ0FnWm1sc2JEMGlJemc0T1RKaE5DSWdkR1Y0ZEMxaGJtTm9iM0k5SW0xcFpHUnNaU0krUVhOemFYTjBZVzUwUEM5MFpYaDBQZ284TDNOMlp6ND0iLCAic2l6ZXMiOiAiNTEyeDUxMiIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwifQogIF0KfQ==">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2YzhmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojYTc4YmZhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQwIiBmaWxsPSIjMWExZDI3Ii8+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSI0MCIgZmlsbD0idXJsKCNnKSIgb3BhY2l0eT0iMC4xNSIvPgogIDx0ZXh0IHg9Ijk2IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iYm9sZCIgCiAgICAgICAgZmlsbD0idXJsKCNnKSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TTwvdGV4dD4KICA8dGV4dCB4PSI5NiIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgCiAgICAgICAgZmlsbD0iIzg4OTJhNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXNzaXN0YW50PC90ZXh0Pgo8L3N2Zz4=">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj4KICA8ZGVmcz4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iZyIgeDE9IjAlIiB5MT0iMCUiIHgyPSIxMDAlIiB5Mj0iMTAwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0eWxlPSJzdG9wLWNvbG9yOiM2YzhmZmYiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdHlsZT0ic3RvcC1jb2xvcjojYTc4YmZhIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KICA8cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjQwIiBmaWxsPSIjMWExZDI3Ii8+CiAgPHJlY3Qgd2lkdGg9IjE5MiIgaGVpZ2h0PSIxOTIiIHJ4PSI0MCIgZmlsbD0idXJsKCNnKSIgb3BhY2l0eT0iMC4xNSIvPgogIDx0ZXh0IHg9Ijk2IiB5PSIxMTUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLHNlcmlmIiBmb250LXNpemU9IjgwIiBmb250LXdlaWdodD0iYm9sZCIgCiAgICAgICAgZmlsbD0idXJsKCNnKSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TTwvdGV4dD4KICA8dGV4dCB4PSI5NiIgeT0iMTYwIiBmb250LWZhbWlseT0iQXJpYWwsc2Fucy1zZXJpZiIgZm9udC1zaXplPSIyMiIgCiAgICAgICAgZmlsbD0iIzg4OTJhNCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QXNzaXN0YW50PC90ZXh0Pgo8L3N2Zz4=">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Assistant</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600&display=swap');
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --card: #21253a;
+    --accent: #6c8fff;
+    --accent2: #a78bfa;
+    --green: #4ade80;
+    --red: #f87171;
+    --yellow: #fbbf24;
+    --text: #e8eaf0;
+    --muted: #8892a4;
+    --border: #2e3347;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  /* Header */
+  .header {
+    background: var(--surface);
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .date-display {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+  .greeting {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab {
+    flex: 1;
+    padding: 12px 8px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .tab.active {
+    color: var(--accent);
+    border-bottom-color: var(--accent);
+  }
+  .tab-icon { display: block; font-size: 18px; margin-bottom: 2px; }
+
+  /* Content */
+  .content { padding: 16px; padding-bottom: 80px; }
+  .section { display: none; }
+  .section.active { display: block; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-bottom: 12px;
+  }
+
+  /* Today summary */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .summary-item {
+    background: var(--surface);
+    border-radius: 10px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .summary-num {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1;
+  }
+  .summary-label { font-size: 10px; color: var(--muted); margin-top: 4px; }
+
+  /* Task item */
+  .task-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .task-item:last-child { border-bottom: none; }
+  .task-check {
+    width: 20px; height: 20px;
+    border: 2px solid var(--border);
+    border-radius: 6px;
+    cursor: pointer;
+    flex-shrink: 0;
+    margin-top: 1px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.2s;
+  }
+  .task-check.done {
+    background: var(--green);
+    border-color: var(--green);
+  }
+  .task-check.done::after { content: '✓'; font-size: 11px; color: #000; font-weight: 700; }
+  .task-info { flex: 1; }
+  .task-text { font-size: 14px; line-height: 1.4; }
+  .task-text.done { text-decoration: line-through; color: var(--muted); }
+  .task-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .task-del {
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: color 0.2s;
+  }
+  .task-del:hover { color: var(--red); }
+
+  /* Priority badge */
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-left: 6px;
+  }
+  .badge-high { background: #3d1a1a; color: var(--red); }
+  .badge-medium { background: #3d2e0a; color: var(--yellow); }
+  .badge-low { background: #0a2a1a; color: var(--green); }
+
+  /* Input area */
+  .input-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    align-items: flex-end;
+  }
+  .input-group { flex: 1; }
+  input[type="text"], textarea, select {
+    width: 100%;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  input[type="text"]:focus, textarea:focus, select:focus {
+    border-color: var(--accent);
+  }
+  textarea { resize: none; min-height: 70px; }
+  select option { background: var(--surface); }
+
+  .btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    white-space: nowrap;
+  }
+  .btn:hover { opacity: 0.85; }
+  .btn-sm { padding: 7px 12px; font-size: 12px; }
+  .btn-ghost {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-mic {
+    background: var(--accent2);
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    font-size: 20px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .btn-mic.recording {
+    background: var(--red);
+    animation: pulse 1s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  /* Schedule */
+  .time-slot {
+    display: flex;
+    gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    align-items: flex-start;
+  }
+  .time-slot:last-child { border-bottom: none; }
+  .slot-time {
+    font-size: 12px;
+    color: var(--accent);
+    font-weight: 600;
+    min-width: 50px;
+    margin-top: 2px;
+  }
+  .slot-content { flex: 1; }
+  .slot-title { font-size: 14px; }
+  .slot-note { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .slot-del {
+    color: var(--muted);
+    cursor: pointer;
+    font-size: 16px;
+    padding: 2px 4px;
+  }
+  .slot-del:hover { color: var(--red); }
+
+  /* Notes */
+  .note-item {
+    padding: 12px;
+    background: var(--surface);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    border-left: 3px solid var(--accent2);
+  }
+  .note-text { font-size: 14px; line-height: 1.5; }
+  .note-meta {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .note-del { cursor: pointer; color: var(--muted); }
+  .note-del:hover { color: var(--red); }
+
+  /* Voice status */
+  .voice-status {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    padding: 6px;
+  }
+
+  /* Pending alert */
+  .alert {
+    background: #1e1a2e;
+    border: 1px solid var(--accent2);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 12px;
+    font-size: 13px;
+  }
+  .alert-title { color: var(--accent2); font-weight: 600; margin-bottom: 4px; }
+
+  /* Empty state */
+  .empty {
+    text-align: center;
+    color: var(--muted);
+    padding: 30px 0;
+    font-size: 14px;
+  }
+  .empty-icon { font-size: 32px; margin-bottom: 8px; }
+
+  .form-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .form-row > * { flex: 1; }
+
+  /* Floating add btn */
+  .fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(108,143,255,0.4);
+    border: none;
+    color: white;
+    z-index: 200;
+  }
+
+  /* Modal */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    z-index: 300;
+    align-items: flex-end;
+  }
+  .modal-overlay.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border-radius: 20px 20px 0 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+    border-top: 1px solid var(--border);
+  }
+  .modal-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .modal-actions { display: flex; gap: 8px; margin-top: 12px; }
+
+  label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 4px; }
+  .field { margin-bottom: 10px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-top">
+    <h1>My Assistant</h1>
+    <span class="greeting" id="greeting"></span>
+  </div>
+  <div class="date-display" id="dateDisplay"></div>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('today')">
+    <span class="tab-icon">🏠</span>Today
+  </div>
+  <div class="tab" onclick="showTab('tasks')">
+    <span class="tab-icon">✅</span>Tasks
+  </div>
+  <div class="tab" onclick="showTab('schedule')">
+    <span class="tab-icon">🕐</span>Schedule
+  </div>
+  <div class="tab" onclick="showTab('notes')">
+    <span class="tab-icon">📝</span>Notes
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- TODAY -->
+  <div class="section active" id="today">
+    <div id="pendingAlert"></div>
+
+    <div class="card">
+      <div class="card-title">Today at a glance</div>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <div class="summary-num" id="totalTasks" style="color:var(--accent)">0</div>
+          <div class="summary-label">Total Tasks</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-num" id="doneTasks" style="color:var(--green)">0</div>
+          <div class="summary-label">Done</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-num" id="pendingTasks" style="color:var(--yellow)">0</div>
+          <div class="summary-label">Pending</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Today's Schedule</div>
+      <div id="todaySchedule"><div class="empty"><div class="empty-icon">📅</div>No schedule yet</div></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Pending Tasks</div>
+      <div id="todayTasks"><div class="empty"><div class="empty-icon">🎉</div>All clear!</div></div>
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="section" id="tasks">
+    <div class="card">
+      <div class="card-title">Add Task</div>
+
+      <!-- Voice input row -->
+      <div class="input-row">
+        <textarea id="taskInput" placeholder="Type your task... or use mic 🎤" rows="2"></textarea>
+        <button class="btn btn-mic" id="micBtn" onclick="toggleVoice('task')" title="Voice input">🎤</button>
+      </div>
+      <div class="voice-status" id="taskVoiceStatus"></div>
+
+      <div class="form-row">
+        <div>
+          <label>Time (optional)</label>
+          <input type="text" id="taskTime" placeholder="e.g. 9:00 AM">
+        </div>
+        <div>
+          <label>Priority</label>
+          <select id="taskPriority">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn" onclick="addTask()" style="width:100%">Add Task</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">All Tasks</div>
+      <div id="taskList"><div class="empty"><div class="empty-icon">✅</div>No tasks yet. Add one above!</div></div>
+    </div>
+  </div>
+
+  <!-- SCHEDULE -->
+  <div class="section" id="schedule">
+    <div class="card">
+      <div class="card-title">Add to Schedule</div>
+      <div class="input-row">
+        <textarea id="scheduleInput" placeholder="Describe your schedule... or use mic 🎤" rows="2"></textarea>
+        <button class="btn btn-mic" id="micBtnSchedule" onclick="toggleVoice('schedule')" title="Voice input">🎤</button>
+      </div>
+      <div class="voice-status" id="scheduleVoiceStatus"></div>
+      <div class="form-row">
+        <div>
+          <label>Time *</label>
+          <input type="text" id="scheduleTime" placeholder="e.g. 8:00 AM">
+        </div>
+        <div>
+          <label>Day</label>
+          <select id="scheduleDay">
+            <option value="daily">Daily</option>
+            <option value="saturday">Saturday</option>
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">Friday</option>
+          </select>
+        </div>
+      </div>
+      <button class="btn" onclick="addSchedule()" style="width:100%">Add to Schedule</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">My Routine</div>
+      <div id="scheduleList"><div class="empty"><div class="empty-icon">🕐</div>No schedule yet. Add one above!</div></div>
+    </div>
+  </div>
+
+  <!-- NOTES -->
+  <div class="section" id="notes">
+    <div class="card">
+      <div class="card-title">Quick Note</div>
+      <div class="input-row">
+        <textarea id="noteInput" placeholder="Write a note... or use mic 🎤" rows="3"></textarea>
+        <button class="btn btn-mic" id="micBtnNote" onclick="toggleVoice('note')" title="Voice input">🎤</button>
+      </div>
+      <div class="voice-status" id="noteVoiceStatus"></div>
+      <button class="btn" onclick="addNote()" style="width:100%">Save Note</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">All Notes</div>
+      <div id="noteList"><div class="empty"><div class="empty-icon">📝</div>No notes yet. Add one above!</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+// ===== DATA =====
+const KEYS = { tasks: 'pa_tasks', schedule: 'pa_schedule', notes: 'pa_notes' };
+
+function load(key) {
+  try { return JSON.parse(localStorage.getItem(key)) || []; } catch { return []; }
+}
+function save(key, data) {
+  localStorage.setItem(key, JSON.stringify(data));
+}
+
+let tasks = load(KEYS.tasks);
+let schedule = load(KEYS.schedule);
+let notes = load(KEYS.notes);
+
+// ===== HEADER =====
+function initHeader() {
+  const now = new Date();
+  const h = now.getHours();
+  const greeting = h < 12 ? '🌅 Good morning' : h < 17 ? '☀️ Good afternoon' : '🌙 Good evening';
+  document.getElementById('greeting').textContent = greeting;
+  const days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  document.getElementById('dateDisplay').textContent =
+    `${days[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+}
+
+// ===== TABS =====
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(name).classList.add('active');
+  document.querySelectorAll('.tab')[['today','tasks','schedule','notes'].indexOf(name)].classList.add('active');
+  if (name === 'today') renderToday();
+}
+
+// ===== TASKS =====
+function addTask() {
+  const text = document.getElementById('taskInput').value.trim();
+  if (!text) return;
+  const task = {
+    id: Date.now(),
+    text,
+    time: document.getElementById('taskTime').value.trim(),
+    priority: document.getElementById('taskPriority').value,
+    done: false,
+    created: new Date().toLocaleDateString('en-GB')
+  };
+  tasks.unshift(task);
+  save(KEYS.tasks, tasks);
+  document.getElementById('taskInput').value = '';
+  document.getElementById('taskTime').value = '';
+  renderTasks();
+  renderToday();
+}
+
+function toggleTask(id) {
+  tasks = tasks.map(t => t.id === id ? {...t, done: !t.done} : t);
+  save(KEYS.tasks, tasks);
+  renderTasks();
+  renderToday();
+}
+
+function deleteTask(id) {
+  tasks = tasks.filter(t => t.id !== id);
+  save(KEYS.tasks, tasks);
+  renderTasks();
+  renderToday();
+}
+
+function renderTasks() {
+  const el = document.getElementById('taskList');
+  if (!tasks.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">✅</div>No tasks yet!</div>'; return; }
+  el.innerHTML = tasks.map(t => `
+    <div class="task-item">
+      <div class="task-check ${t.done ? 'done' : ''}" onclick="toggleTask(${t.id})"></div>
+      <div class="task-info">
+        <div class="task-text ${t.done ? 'done' : ''}">${t.text}
+          <span class="badge badge-${t.priority}">${t.priority}</span>
+        </div>
+        <div class="task-meta">${t.time ? '🕐 ' + t.time + ' · ' : ''}${t.created}</div>
+      </div>
+      <span class="task-del" onclick="deleteTask(${t.id})">🗑</span>
+    </div>
+  `).join('');
+}
+
+// ===== SCHEDULE =====
+function addSchedule() {
+  const title = document.getElementById('scheduleInput').value.trim();
+  const time = document.getElementById('scheduleTime').value.trim();
+  if (!title || !time) { alert('Please enter both time and description.'); return; }
+  const slot = {
+    id: Date.now(),
+    title,
+    time,
+    day: document.getElementById('scheduleDay').value
+  };
+  schedule.push(slot);
+  schedule.sort((a, b) => a.time.localeCompare(b.time));
+  save(KEYS.schedule, schedule);
+  document.getElementById('scheduleInput').value = '';
+  document.getElementById('scheduleTime').value = '';
+  renderSchedule();
+  renderToday();
+}
+
+function deleteSchedule(id) {
+  schedule = schedule.filter(s => s.id !== id);
+  save(KEYS.schedule, schedule);
+  renderSchedule();
+  renderToday();
+}
+
+function renderSchedule() {
+  const el = document.getElementById('scheduleList');
+  if (!schedule.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">🕐</div>No schedule yet!</div>'; return; }
+  const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const today = days[new Date().getDay()];
+  el.innerHTML = schedule.map(s => `
+    <div class="time-slot">
+      <div class="slot-time">${s.time}</div>
+      <div class="slot-content">
+        <div class="slot-title">${s.title}</div>
+        <div class="slot-note">${s.day === 'daily' ? 'Every day' : s.day.charAt(0).toUpperCase() + s.day.slice(1)}</div>
+      </div>
+      <span class="slot-del" onclick="deleteSchedule(${s.id})">🗑</span>
+    </div>
+  `).join('');
+}
+
+// ===== NOTES =====
+function addNote() {
+  const text = document.getElementById('noteInput').value.trim();
+  if (!text) return;
+  const note = {
+    id: Date.now(),
+    text,
+    date: new Date().toLocaleString('en-GB', {day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})
+  };
+  notes.unshift(note);
+  save(KEYS.notes, notes);
+  document.getElementById('noteInput').value = '';
+  renderNotes();
+}
+
+function deleteNote(id) {
+  notes = notes.filter(n => n.id !== id);
+  save(KEYS.notes, notes);
+  renderNotes();
+}
+
+function renderNotes() {
+  const el = document.getElementById('noteList');
+  if (!notes.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📝</div>No notes yet!</div>'; return; }
+  el.innerHTML = notes.map(n => `
+    <div class="note-item">
+      <div class="note-text">${n.text}</div>
+      <div class="note-meta">
+        <span>${n.date}</span>
+        <span class="note-del" onclick="deleteNote(${n.id})">🗑</span>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===== TODAY =====
+function renderToday() {
+  const total = tasks.length;
+  const done = tasks.filter(t => t.done).length;
+  const pending = total - done;
+  document.getElementById('totalTasks').textContent = total;
+  document.getElementById('doneTasks').textContent = done;
+  document.getElementById('pendingTasks').textContent = pending;
+
+  // Pending alert
+  const alertEl = document.getElementById('pendingAlert');
+  const highPending = tasks.filter(t => !t.done && t.priority === 'high');
+  if (highPending.length) {
+    alertEl.innerHTML = `<div class="alert"><div class="alert-title">⚠️ ${highPending.length} high priority task(s) pending!</div>${highPending.map(t => `• ${t.text}`).join('<br>')}</div>`;
+  } else if (pending > 0) {
+    alertEl.innerHTML = `<div class="alert"><div class="alert-title">📋 You have ${pending} pending task(s) today.</div></div>`;
+  } else if (total > 0) {
+    alertEl.innerHTML = `<div class="alert" style="border-color:var(--green)"><div class="alert-title" style="color:var(--green)">🎉 All tasks completed! Great work!</div></div>`;
+  } else {
+    alertEl.innerHTML = '';
+  }
+
+  // Today's schedule
+  const days = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+  const today = days[new Date().getDay()];
+  const todaySlots = schedule.filter(s => s.day === 'daily' || s.day === today);
+  const schedEl = document.getElementById('todaySchedule');
+  if (!todaySlots.length) {
+    schedEl.innerHTML = '<div class="empty"><div class="empty-icon">📅</div>No schedule for today</div>';
+  } else {
+    schedEl.innerHTML = todaySlots.map(s => `
+      <div class="time-slot">
+        <div class="slot-time">${s.time}</div>
+        <div class="slot-content"><div class="slot-title">${s.title}</div></div>
+      </div>
+    `).join('');
+  }
+
+  // Pending tasks
+  const pendingList = tasks.filter(t => !t.done);
+  const taskEl = document.getElementById('todayTasks');
+  if (!pendingList.length) {
+    taskEl.innerHTML = '<div class="empty"><div class="empty-icon">🎉</div>All clear! No pending tasks.</div>';
+  } else {
+    taskEl.innerHTML = pendingList.slice(0, 5).map(t => `
+      <div class="task-item">
+        <div class="task-check" onclick="toggleTask(${t.id}); renderToday()"></div>
+        <div class="task-info">
+          <div class="task-text">${t.text} <span class="badge badge-${t.priority}">${t.priority}</span></div>
+          ${t.time ? `<div class="task-meta">🕐 ${t.time}</div>` : ''}
+        </div>
+      </div>
+    `).join('') + (pendingList.length > 5 ? `<div style="text-align:center;padding:8px;font-size:12px;color:var(--muted)">+${pendingList.length-5} more tasks</div>` : '');
+  }
+}
+
+// ===== VOICE INPUT =====
+let recognition = null;
+let activeVoiceField = null;
+
+function toggleVoice(field) {
+  const statusIds = { task: 'taskVoiceStatus', schedule: 'scheduleVoiceStatus', note: 'noteVoiceStatus' };
+  const inputIds = { task: 'taskInput', schedule: 'scheduleInput', note: 'noteInput' };
+  const btnIds = { task: 'micBtn', schedule: 'micBtnSchedule', note: 'micBtnNote' };
+
+  if (!('webkitSpeechRecognition' in window) && !('SpeechRecognition' in window)) {
+    document.getElementById(statusIds[field]).textContent = '⚠️ Voice not supported in this browser. Try Chrome.';
+    return;
+  }
+
+  if (recognition && activeVoiceField === field) {
+    recognition.stop();
+    return;
+  }
+
+  if (recognition) recognition.stop();
+
+  activeVoiceField = field;
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  recognition = new SpeechRecognition();
+  recognition.lang = 'bn-BD';
+  recognition.continuous = false;
+  recognition.interimResults = true;
+
+  document.getElementById(btnIds[field]).classList.add('recording');
+  document.getElementById(statusIds[field]).textContent = '🎤 Listening... speak now';
+
+  recognition.onresult = (e) => {
+    const transcript = Array.from(e.results).map(r => r[0].transcript).join('');
+    document.getElementById(inputIds[field]).value = transcript;
+  };
+
+  recognition.onend = () => {
+    document.getElementById(btnIds[field]).classList.remove('recording');
+    document.getElementById(statusIds[field]).textContent = '✅ Done! Edit if needed.';
+    setTimeout(() => { document.getElementById(statusIds[field]).textContent = ''; }, 3000);
+    recognition = null;
+    activeVoiceField = null;
+  };
+
+  recognition.onerror = (e) => {
+    document.getElementById(btnIds[field]).classList.remove('recording');
+    document.getElementById(statusIds[field]).textContent = '⚠️ Could not hear. Try again.';
+    recognition = null;
+    activeVoiceField = null;
+  };
+
+  recognition.start();
+}
+
+// ===== INIT =====
+initHeader();
+renderTasks();
+renderSchedule();
+renderNotes();
+renderToday();
+</script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  const swCode = `
+    self.addEventListener('install', e => self.skipWaiting());
+    self.addEventListener('activate', e => self.clients.claim());
+    self.addEventListener('fetch', e => e.respondWith(fetch(e.request).catch(() => caches.match(e.request))));
+  `;
+  const blob = new Blob([swCode], {type: 'application/javascript'});
+  const swUrl = URL.createObjectURL(blob);
+  navigator.serviceWorker.register(swUrl).catch(() => {});
+}
+</script>
+</body>
+</html>
